@@ -268,28 +268,79 @@
 
         <!-- ================= TIENDA PAGE ================= -->
         <div id="tienda" class="page-section">
-            <div class="max-w-7xl mx-auto px-4 py-20">
-                <h1 class="font-heading font-bold text-4xl mb-16 text-center">TIENDA</h1>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-                    
-                    <!-- Producto 1 (Grande) -->
+            <div class="max-w-7xl mx-auto px-4 py-16">
+                <div class="text-center mb-14">
+                    <h1 class="font-heading font-bold text-4xl mb-3">TIENDA</h1>
+                    <p class="text-gray-500 text-lg">Elige tu porción. Mora Berry — disponible en 3 tamaños.</p>
+                </div>
+
+                <!-- Producto Destacado (Grande) -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20 pb-20 border-b border-gray-200">
                     <div class="flex justify-center">
-                        <div class="product-circle w-full max-w-[450px]">
-                            <img src="puffke25.jpeg" alt="Puffkers Mora Berry" class="w-full h-full object-cover">
+                        <div class="product-circle w-full max-w-[420px]">
+                            <img src="puffke25.jpeg" alt="Puffkers Grande" class="w-full h-full object-cover">
                         </div>
                     </div>
                     <div class="flex flex-col justify-center">
-                        <h2 class="font-heading font-bold text-3xl mb-2">PUFFKERS Sabor Mora Berry</h2>
-                        <p class="text-gray-500 mb-6">Cereal On-The-Go. Porción 70g.</p>
-                        <p class="text-2xl mb-8">Q.25.00 <span class="text-sm text-gray-400 line-through ml-2">USD 20.00</span></p>
-                        
-                        <div class="flex items-center gap-4 max-w-md">
-                            <div class="flex items-center border border-gray-300 rounded px-4 py-3 bg-white">
-                                <button class="text-gray-500 hover:text-black px-2">-</button>
-                                <span class="px-6 font-semibold">1</span>
-                                <button class="text-gray-500 hover:text-black px-2">+</button>
+                        <span class="inline-block bg-purple-100 text-purple-700 text-xs font-bold px-3 py-1 rounded-full mb-4 w-fit">⭐ MÁS POPULAR</span>
+                        <h2 class="font-heading font-bold text-4xl mb-2">PUFFKERS Grande</h2>
+                        <p class="text-gray-400 text-sm mb-2">Sabor Mora Berry · Porción 78g</p>
+                        <p class="text-gray-500 mb-6 leading-relaxed">La porción ideal para una mañana con energía completa. Cereal on-the-go con la intensidad del sabor mora berry.</p>
+                        <div class="flex items-baseline gap-3 mb-8">
+                            <span class="font-heading font-black text-4xl">Q.25.00</span>
+                        </div>
+                        <div class="flex items-center gap-4 max-w-sm">
+                            <div class="flex items-center border border-gray-300 rounded-lg px-3 py-3 bg-white">
+                                <button onclick="changeQty(this,-1)" class="text-gray-500 hover:text-black w-8 h-8 flex items-center justify-center font-bold text-xl">−</button>
+                                <span class="qty-display px-4 font-semibold min-w-[2.5rem] text-center">1</span>
+                                <button onclick="changeQty(this,1)" class="text-gray-500 hover:text-black w-8 h-8 flex items-center justify-center font-bold text-xl">+</button>
                             </div>
-                            <button onclick="addToCart()" class="flex-1 bg-black border border-black text-white font-semibold py-3 px-6 rounded hover:bg-gray-800 transition-colors">Añadir al carrito</button>
+                            <button onclick="addToCartQty(this,'Puffkers Grande Q.25',25)" class="flex-1 bg-black text-white font-semibold py-3 px-6 rounded-lg hover:bg-gray-800 transition-colors">Añadir al carrito</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Productos Secundarios -->
+                <h2 class="font-heading font-bold text-2xl mb-10 text-center text-gray-400 uppercase tracking-widest text-sm">También disponible</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+
+                    <!-- Producto Mediano -->
+                    <div class="flex gap-6 items-center border border-gray-200 rounded-2xl p-6 bg-white hover:shadow-md transition-shadow">
+                        <div class="product-circle w-36 h-36 flex-shrink-0">
+                            <img src="puffke20.jpeg" alt="Puffkers Mediano" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-heading font-bold text-xl mb-1">PUFFKERS Mediano</h3>
+                            <p class="text-gray-400 text-xs mb-3">Sabor Mora Berry · Porción 78g</p>
+                            <p class="font-heading font-black text-2xl text-purple-600 mb-4">Q.20.00</p>
+                            <div class="flex items-center gap-3">
+                                <div class="flex items-center border border-gray-300 rounded-lg px-2 py-2 bg-gray-50">
+                                    <button onclick="changeQty(this,-1)" class="text-gray-500 hover:text-black w-6 h-6 flex items-center justify-center font-bold">−</button>
+                                    <span class="qty-display px-3 font-semibold min-w-[1.5rem] text-center text-sm">1</span>
+                                    <button onclick="changeQty(this,1)" class="text-gray-500 hover:text-black w-6 h-6 flex items-center justify-center font-bold">+</button>
+                                </div>
+                                <button onclick="addToCartQty(this,'Puffkers Mediano Q.20',20)" class="flex-1 border border-black text-black font-semibold py-2 px-4 rounded-lg hover:bg-black hover:text-white transition-colors text-sm">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Producto Pequeño -->
+                    <div class="flex gap-6 items-center border border-gray-200 rounded-2xl p-6 bg-white hover:shadow-md transition-shadow">
+                        <div class="product-circle w-36 h-36 flex-shrink-0">
+                            <img src="puffke15.jpeg" alt="Puffkers Pequeño" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-heading font-bold text-xl mb-1">PUFFKERS Pequeño</h3>
+                            <p class="text-gray-400 text-xs mb-3">Sabor Mora Berry · Porción 35g</p>
+                            <p class="font-heading font-black text-2xl text-purple-600 mb-4">Q.15.00</p>
+                            <div class="flex items-center gap-3">
+                                <div class="flex items-center border border-gray-300 rounded-lg px-2 py-2 bg-gray-50">
+                                    <button onclick="changeQty(this,-1)" class="text-gray-500 hover:text-black w-6 h-6 flex items-center justify-center font-bold">−</button>
+                                    <span class="qty-display px-3 font-semibold min-w-[1.5rem] text-center text-sm">1</span>
+                                    <button onclick="changeQty(this,1)" class="text-gray-500 hover:text-black w-6 h-6 flex items-center justify-center font-bold">+</button>
+                                </div>
+                                <button onclick="addToCartQty(this,'Puffkers Pequeño Q.15',15)" class="flex-1 border border-black text-black font-semibold py-2 px-4 rounded-lg hover:bg-black hover:text-white transition-colors text-sm">Añadir</button>
+                            </div>
                         </div>
                     </div>
 
@@ -348,7 +399,7 @@
                     </form>
                 </div>
                 <div class="hidden md:block">
-                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Decoración Puffkers" class="w-full h-full object-cover rounded-2xl">
+                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80" alt="Consulta Puffkers" class="w-full h-full object-cover rounded-2xl">
                 </div>
             </div>
         </div>
