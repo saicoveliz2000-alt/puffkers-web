@@ -168,44 +168,50 @@
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
                         <!-- Product 1 -->
                         <div class="flex flex-col items-center">
-                            <div class="product-circle w-full max-w-[300px] mb-6">
-                                <img src="puffke25.jpeg" alt="Cereal Puffkers 25" class="w-full h-full object-cover">
+                            <div class="product-circle w-full max-w-[300px] mb-4 cursor-pointer" onclick="navigate('tienda')">
+                                <img src="puffke25.jpeg" alt="Cereal Puffkers 25" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
                             </div>
-                            <div class="flex items-center justify-center w-full max-w-[300px] gap-4">
-                                <div class="flex items-center border border-gray-300 rounded px-3 py-2 bg-white">
-                                    <button class="text-gray-500 hover:text-black px-2">-</button>
-                                    <span class="px-4 font-semibold">1</span>
-                                    <button class="text-gray-500 hover:text-black px-2">+</button>
+                            <h3 class="font-heading font-bold text-lg mb-1">Puffkers Grande</h3>
+                            <p class="text-purple-600 font-bold text-xl mb-4">Q.25.00</p>
+                            <div class="flex items-center justify-center w-full max-w-[300px] gap-3">
+                                <div class="flex items-center border border-gray-300 rounded px-2 py-2 bg-white">
+                                    <button onclick="changeQty(this,-1)" class="text-gray-500 hover:text-black w-7 h-7 flex items-center justify-center font-bold text-lg">−</button>
+                                    <span class="qty-display px-3 font-semibold min-w-[2rem] text-center">1</span>
+                                    <button onclick="changeQty(this,1)" class="text-gray-500 hover:text-black w-7 h-7 flex items-center justify-center font-bold text-lg">+</button>
                                 </div>
-                                <button onclick="addToCart()" class="flex-1 bg-transparent border border-black text-black font-semibold py-2 px-4 rounded hover:bg-black hover:text-white transition-colors">Añadir al carrito</button>
+                                <button onclick="addToCartQty(this,'Puffkers Grande Q.25',25)" class="flex-1 bg-transparent border border-black text-black font-semibold py-2 px-3 rounded hover:bg-black hover:text-white transition-colors text-sm">Añadir</button>
                             </div>
                         </div>
                         <!-- Product 2 -->
                         <div class="flex flex-col items-center">
-                            <div class="product-circle w-full max-w-[300px] mb-6">
-                                <img src="puffke20.jpeg" alt="Cereal Puffkers 20" class="w-full h-full object-cover">
+                            <div class="product-circle w-full max-w-[300px] mb-4 cursor-pointer" onclick="navigate('tienda')">
+                                <img src="puffke20.jpeg" alt="Cereal Puffkers 20" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
                             </div>
-                            <div class="flex items-center justify-center w-full max-w-[300px] gap-4">
-                                <div class="flex items-center border border-gray-300 rounded px-3 py-2 bg-white">
-                                    <button class="text-gray-500 hover:text-black px-2">-</button>
-                                    <span class="px-4 font-semibold">1</span>
-                                    <button class="text-gray-500 hover:text-black px-2">+</button>
+                            <h3 class="font-heading font-bold text-lg mb-1">Puffkers Mediano</h3>
+                            <p class="text-purple-600 font-bold text-xl mb-4">Q.20.00</p>
+                            <div class="flex items-center justify-center w-full max-w-[300px] gap-3">
+                                <div class="flex items-center border border-gray-300 rounded px-2 py-2 bg-white">
+                                    <button onclick="changeQty(this,-1)" class="text-gray-500 hover:text-black w-7 h-7 flex items-center justify-center font-bold text-lg">−</button>
+                                    <span class="qty-display px-3 font-semibold min-w-[2rem] text-center">1</span>
+                                    <button onclick="changeQty(this,1)" class="text-gray-500 hover:text-black w-7 h-7 flex items-center justify-center font-bold text-lg">+</button>
                                 </div>
-                                <button onclick="addToCart()" class="flex-1 bg-transparent border border-black text-black font-semibold py-2 px-4 rounded hover:bg-black hover:text-white transition-colors">Añadir al carrito</button>
+                                <button onclick="addToCartQty(this,'Puffkers Mediano Q.20',20)" class="flex-1 bg-transparent border border-black text-black font-semibold py-2 px-3 rounded hover:bg-black hover:text-white transition-colors text-sm">Añadir</button>
                             </div>
                         </div>
                         <!-- Product 3 -->
                         <div class="flex flex-col items-center">
-                            <div class="product-circle w-full max-w-[300px] mb-6">
-                                <img src="puffke15.jpeg" alt="Cereal Puffkers 15" class="w-full h-full object-cover">
+                            <div class="product-circle w-full max-w-[300px] mb-4 cursor-pointer" onclick="navigate('tienda')">
+                                <img src="puffke15.jpeg" alt="Cereal Puffkers 15" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
                             </div>
-                            <div class="flex items-center justify-center w-full max-w-[300px] gap-4">
-                                <div class="flex items-center border border-gray-300 rounded px-3 py-2 bg-white">
-                                    <button class="text-gray-500 hover:text-black px-2">-</button>
-                                    <span class="px-4 font-semibold">1</span>
-                                    <button class="text-gray-500 hover:text-black px-2">+</button>
+                            <h3 class="font-heading font-bold text-lg mb-1">Puffkers Pequeño</h3>
+                            <p class="text-purple-600 font-bold text-xl mb-4">Q.15.00</p>
+                            <div class="flex items-center justify-center w-full max-w-[300px] gap-3">
+                                <div class="flex items-center border border-gray-300 rounded px-2 py-2 bg-white">
+                                    <button onclick="changeQty(this,-1)" class="text-gray-500 hover:text-black w-7 h-7 flex items-center justify-center font-bold text-lg">−</button>
+                                    <span class="qty-display px-3 font-semibold min-w-[2rem] text-center">1</span>
+                                    <button onclick="changeQty(this,1)" class="text-gray-500 hover:text-black w-7 h-7 flex items-center justify-center font-bold text-lg">+</button>
                                 </div>
-                                <button onclick="addToCart()" class="flex-1 bg-transparent border border-black text-black font-semibold py-2 px-4 rounded hover:bg-black hover:text-white transition-colors">Añadir al carrito</button>
+                                <button onclick="addToCartQty(this,'Puffkers Pequeño Q.15',15)" class="flex-1 bg-transparent border border-black text-black font-semibold py-2 px-3 rounded hover:bg-black hover:text-white transition-colors text-sm">Añadir</button>
                             </div>
                         </div>
                     </div>
@@ -342,26 +348,33 @@
                     </form>
                 </div>
                 <div class="hidden md:block">
-                    <img src="https://placehold.co/600x800/eaeaea/a3a3a3?text=[Imagen+de+Esfera+Decorativa]" alt="Decoración" class="w-full h-full object-cover rounded-sm">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Decoración Puffkers" class="w-full h-full object-cover rounded-2xl">
                 </div>
             </div>
         </div>
 
         <!-- ================= CARRITO PAGE ================= -->
         <div id="carrito" class="page-section">
-            <div class="max-w-4xl mx-auto px-4 py-32 text-center">
-                <h1 class="font-heading font-bold text-3xl mb-6 text-left">Carrito de compra</h1>
+            <div class="max-w-4xl mx-auto px-4 py-16">
+                <h1 class="font-heading font-bold text-3xl mb-8">Carrito de compra</h1>
                 
                 <div id="cart-empty" class="py-12">
-                    <p class="text-gray-500 mb-8 text-left">No tienes nada en tu carrito de compras.</p>
-                    <div class="text-left">
-                        <button onclick="navigate('tienda')" class="border border-black text-black px-6 py-2 rounded text-sm font-semibold hover:bg-black hover:text-white transition-colors">Seguir comprando</button>
-                    </div>
+                    <p class="text-gray-500 mb-8">No tienes nada en tu carrito de compras.</p>
+                    <button onclick="navigate('tienda')" class="border border-black text-black px-6 py-2 rounded text-sm font-semibold hover:bg-black hover:text-white transition-colors">Seguir comprando</button>
                 </div>
 
-                <div id="cart-filled" class="hidden text-left py-8">
-                    <p class="text-green-600 mb-4 font-semibold">¡Tienes artículos en tu carrito!</p>
-                    <button onclick="clearCart()" class="bg-red-500 text-white px-6 py-2 rounded text-sm font-semibold hover:bg-red-600 transition-colors">Vaciar Carrito</button>
+                <div id="cart-filled" class="hidden">
+                    <div id="cart-items-list" class="divide-y divide-gray-200 mb-8"></div>
+                    <div class="flex justify-between items-center border-t pt-6">
+                        <div>
+                            <p class="text-gray-500 text-sm">Total</p>
+                            <p id="cart-total" class="font-heading font-bold text-2xl">Q.0.00</p>
+                        </div>
+                        <div class="flex gap-3">
+                            <button onclick="clearCart()" class="border border-red-400 text-red-500 px-4 py-2 rounded text-sm font-semibold hover:bg-red-500 hover:text-white transition-colors">Vaciar</button>
+                            <button onclick="alert('¡Gracias por tu compra! Pronto nos pondremos en contacto.')" class="bg-black text-white px-6 py-2 rounded text-sm font-semibold hover:bg-gray-800 transition-colors">Finalizar compra</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -379,7 +392,7 @@
             
             <div class="flex space-x-6 mb-16">
                 <a href="#" class="w-12 h-12 rounded-full border border-gray-600 flex items-center justify-center hover:bg-white hover:text-black transition-colors">
-                    <i data-lucide="instagram" class="w-5 h-5"></i>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
                 </a>
                 <a href="#" class="w-12 h-12 rounded-full border border-gray-600 flex items-center justify-center hover:bg-white hover:text-black transition-colors">
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -400,50 +413,69 @@
 
     <!-- JavaScript for Interactions -->
     <script>
-        // Initialize Lucide Icons
         lucide.createIcons();
 
-        // SPA Navigation Logic
+        // SPA Navigation
         function navigate(sectionId) {
-            const sections = document.querySelectorAll('.page-section');
-            sections.forEach(sec => sec.classList.remove('active'));
-            
+            document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
             const target = document.getElementById(sectionId);
-            if (target) {
-                target.classList.add('active');
-                window.scrollTo(0, 0);
-            }
-
-            const mobileMenu = document.getElementById('mobile-menu');
-            if (!mobileMenu.classList.contains('hidden')) {
-                mobileMenu.classList.add('hidden');
-            }
+            if (target) { target.classList.add('active'); window.scrollTo(0,0); }
+            document.getElementById('mobile-menu').classList.add('hidden');
         }
 
-        // Mobile Menu Toggle
         function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
+            document.getElementById('mobile-menu').classList.toggle('hidden');
         }
 
-        // Basic Cart Logic
-        let cartItems = 0;
-        function addToCart() {
-            cartItems++;
+        // Quantity buttons
+        function changeQty(btn, delta) {
+            const container = btn.closest('.flex');
+            const display = container.querySelector('.qty-display');
+            let val = parseInt(display.textContent) + delta;
+            if (val < 1) val = 1;
+            display.textContent = val;
+        }
+
+        // Cart state
+        let cart = [];
+
+        function addToCartQty(btn, name, price) {
+            const container = btn.closest('.flex');
+            const qty = parseInt(container.querySelector('.qty-display').textContent);
+            const existing = cart.find(i => i.name === name);
+            if (existing) existing.qty += qty;
+            else cart.push({ name, price, qty });
             updateCartUI();
-            
+            showToast(btn, qty);
+        }
+
+        // Legacy addToCart for tienda page
+        function addToCart() {
             const btn = event.currentTarget;
-            const originalText = btn.innerText;
-            btn.innerText = "¡Añadido!";
-            btn.classList.add('bg-green-500', 'text-white', 'border-green-500');
+            cart.push({ name: 'Puffkers Mora Berry Q.25', price: 25, qty: 1 });
+            updateCartUI();
+            showToast(btn, 1);
+        }
+
+        function showToast(btn, qty) {
+            const orig = btn.innerText;
+            btn.innerText = '✓ ¡Añadido!';
+            btn.classList.add('bg-green-500','text-white','border-green-500');
             setTimeout(() => {
-                btn.innerText = originalText;
-                btn.classList.remove('bg-green-500', 'text-white', 'border-green-500');
+                btn.innerText = orig;
+                btn.classList.remove('bg-green-500','text-white','border-green-500');
             }, 1500);
+
+            // Toast notification
+            const toast = document.createElement('div');
+            toast.className = 'fixed bottom-6 right-6 bg-black text-white px-5 py-3 rounded-lg shadow-lg text-sm font-semibold z-50 transition-all';
+            toast.textContent = qty + ' producto(s) añadido(s) al carrito';
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 2500);
         }
 
         function clearCart() {
-            cartItems = 0;
+            cart = [];
             updateCartUI();
         }
 
@@ -451,21 +483,42 @@
             const badge = document.getElementById('cart-badge');
             const emptyState = document.getElementById('cart-empty');
             const filledState = document.getElementById('cart-filled');
+            const itemsList = document.getElementById('cart-items-list');
+            const totalEl = document.getElementById('cart-total');
 
-            if (cartItems > 0) {
-                badge.innerText = cartItems;
-                badge.classList.remove('hidden');
-            } else {
-                badge.classList.add('hidden');
-            }
+            const totalItems = cart.reduce((s, i) => s + i.qty, 0);
+            const totalPrice = cart.reduce((s, i) => s + i.price * i.qty, 0);
 
-            if (cartItems > 0) {
+            // Badge
+            if (totalItems > 0) { badge.innerText = totalItems; badge.classList.remove('hidden'); }
+            else badge.classList.add('hidden');
+
+            // Cart page
+            if (cart.length > 0) {
                 emptyState.classList.add('hidden');
                 filledState.classList.remove('hidden');
+                itemsList.innerHTML = cart.map((item, idx) => `
+                    <div class="flex justify-between items-center py-4">
+                        <div>
+                            <p class="font-semibold">${item.name}</p>
+                            <p class="text-sm text-gray-500">Q.${item.price}.00 × ${item.qty}</p>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <p class="font-bold">Q.${item.price * item.qty}.00</p>
+                            <button onclick="removeItem(${idx})" class="text-gray-400 hover:text-red-500 text-lg">×</button>
+                        </div>
+                    </div>
+                `).join('');
+                totalEl.textContent = 'Q.' + totalPrice + '.00';
             } else {
                 emptyState.classList.remove('hidden');
                 filledState.classList.add('hidden');
             }
+        }
+
+        function removeItem(idx) {
+            cart.splice(idx, 1);
+            updateCartUI();
         }
     </script>
 </body>
