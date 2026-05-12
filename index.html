@@ -69,6 +69,99 @@
             box-shadow: 0 10px 25px -5px rgba(168, 85, 247, 0.15);
             border-color: #d8b4fe;
         }
+
+        /* Smooth scroll */
+        html { scroll-behavior: smooth; }
+
+        /* Scroll reveal animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Scroll to top button */
+        #scroll-top-btn {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 48px;
+            height: 48px;
+            background: #000;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 40;
+            border: none;
+        }
+        #scroll-top-btn.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        #scroll-top-btn:hover {
+            background: #7c3aed;
+            transform: translateY(-3px);
+        }
+
+        /* FAQ accordion */
+        .faq-item summary {
+            cursor: pointer;
+            list-style: none;
+            padding: 1.25rem 0;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: color 0.2s;
+        }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: #9ca3af;
+            transition: transform 0.3s;
+        }
+        .faq-item[open] summary::after {
+            transform: rotate(45deg);
+            color: #7c3aed;
+        }
+        .faq-item summary:hover { color: #7c3aed; }
+        .faq-item p {
+            padding: 0 0 1.25rem 0;
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        /* Input focus animations */
+        .form-input {
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .form-input:focus {
+            border-color: #7c3aed !important;
+        }
+        .form-input.invalid {
+            border-color: #ef4444 !important;
+        }
+
+        /* Cart item animation */
+        .cart-item-row {
+            animation: slideIn 0.3s ease;
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-10px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
     </style>
 </head>
 <body class="antialiased flex flex-col min-h-screen">
@@ -125,8 +218,16 @@
         <div id="home" class="page-section active">
             
             <!-- Hero Section -->
-            <section class="bg-black flex items-center justify-center">
+            <section class="bg-black flex items-center justify-center relative">
                 <img src="hero.jpeg" alt="PUFFKERS Hero" class="w-full max-w-7xl object-cover">
+                <div class="absolute bottom-8 left-0 right-0 flex justify-center gap-4 px-4">
+                    <button onclick="navigate('tienda')" class="bg-white text-black px-6 py-3 rounded-lg font-semibold text-sm hover:bg-purple-600 hover:text-white transition-colors shadow-lg">
+                        Ver Tienda →
+                    </button>
+                    <button onclick="navigate('acerca')" class="bg-transparent border-2 border-white text-white px-6 py-3 rounded-lg font-semibold text-sm hover:bg-white hover:text-black transition-colors">
+                        Conocer más
+                    </button>
+                </div>
             </section>
 
             <!-- Tagline Section -->
@@ -221,13 +322,20 @@
             <!-- Propuesta de Valor -->
             <section class="py-20 max-w-7xl mx-auto px-4">
                 <h2 class="font-heading font-bold text-3xl mb-12">PROPUESTA DE VALOR</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div class="value-card border border-gray-200 rounded-2xl p-8 text-center bg-white shadow-sm">
                         <div class="mx-auto w-16 h-16 flex items-center justify-center text-blue-400 mb-6 border-2 border-blue-100 rounded-2xl">
                             <i data-lucide="package" class="w-8 h-8"></i>
                         </div>
                         <h3 class="font-heading font-bold text-xl mb-4">PRACTICIDAD</h3>
                         <p class="text-gray-500 text-sm">Porciones individuales diseñadas para ser consumidas en el bus o entre clases. Sin necesidad de platos ni cucharas extra.</p>
+                    </div>
+                    <div class="value-card border border-gray-200 rounded-2xl p-8 text-center bg-white shadow-sm">
+                        <div class="mx-auto w-16 h-16 flex items-center justify-center text-purple-400 mb-6 border-2 border-purple-100 rounded-2xl">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 5.5C19 7 20.5 9 21 11c-1.323.265-2.646.39-4.118.226M5.5 17.5C7 19 9 20.5 11 21c.5-2.5.5-5-1-7"/><circle cx="9" cy="9" r="2"/><circle cx="15" cy="9" r="2"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><path d="M12 2a7 7 0 0 0-7 7v3a5 5 0 0 0 5 5h4a5 5 0 0 0 5-5V9a7 7 0 0 0-7-7z"/></svg>
+                        </div>
+                        <h3 class="font-heading font-bold text-xl mb-4">OSOS COLECCIONABLES</h3>
+                        <p class="text-gray-500 text-sm">Diseñados con amor y detalles únicos para acompañarte, decorar tus espacios y convertirse en parte de tu historia.</p>
                     </div>
                     <div class="value-card border border-gray-200 rounded-2xl p-8 text-center bg-white shadow-sm">
                         <div class="mx-auto w-16 h-16 flex items-center justify-center text-pink-400 mb-6 border-2 border-pink-100 rounded-2xl">
@@ -247,6 +355,33 @@
                     <div class="flex justify-center w-full">
                         <img src="equipo.jpeg" alt="Equipo de Trabajo Puffkers" class="w-full max-w-5xl h-auto object-contain">
                     </div>
+                </div>
+            </section>
+
+            <!-- FAQ -->
+            <section class="py-20 max-w-3xl mx-auto px-4">
+                <h2 class="font-heading font-bold text-3xl mb-12 text-center">PREGUNTAS FRECUENTES</h2>
+                <div class="space-y-2">
+                    <details class="faq-item border-b border-gray-200">
+                        <summary>¿Dónde puedo comprar Puffkers?</summary>
+                        <p>Próximamente disponible en universidades de la Ciudad de Guatemala, tiendas de conveniencia y a través de nuestra tienda en línea. ¡Síguenos en redes para enterarte primero!</p>
+                    </details>
+                    <details class="faq-item border-b border-gray-200">
+                        <summary>¿Qué tamaños y precios manejan?</summary>
+                        <p>Tenemos 3 presentaciones: Pequeño (Q.15), Mediano (Q.20) y Grande (Q.25). Todos en sabor Mora Berry, con porciones diseñadas para diferentes momentos del día.</p>
+                    </details>
+                    <details class="faq-item border-b border-gray-200">
+                        <summary>¿El cereal viene listo para comer?</summary>
+                        <p>¡Sí! Cada vaso de Puffkers es 100% on-the-go. Solo abres, agregas leche si quieres, y listo. Sin platos, sin cucharas, sin complicaciones.</p>
+                    </details>
+                    <details class="faq-item border-b border-gray-200">
+                        <summary>¿Cómo consigo un oso coleccionable?</summary>
+                        <p>Los osos metálicos del oso Puffkers vienen como promoción especial en ediciones limitadas. Disponibles en 5 colores: Chrome, Purple, Pink, Gold y Blue.</p>
+                    </details>
+                    <details class="faq-item border-b border-gray-200">
+                        <summary>¿Hacen envíos a domicilio?</summary>
+                        <p>Estamos trabajando en nuestro sistema de envíos. Por ahora, puedes contactarnos por el formulario y te ayudaremos con tu pedido personalizado.</p>
+                    </details>
                 </div>
             </section>
 
@@ -369,24 +504,24 @@
                     <h1 class="font-heading font-bold text-4xl mb-4">Enviar tu consulta</h1>
                     <p class="text-gray-500 mb-10">¿Tienes un proyecto en mente? Llena el formulario y diseñemos juntos algo increíble.</p>
                     
-                    <form class="space-y-6" onsubmit="event.preventDefault(); alert('Mensaje enviado. ¡Gracias!');">
+                    <form class="space-y-6" onsubmit="handleContactSubmit(event)" id="contact-form">
                         <div class="grid grid-cols-2 gap-6">
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-1">Nombre <span class="text-gray-400">(obligatorio)</span></label>
-                                <input type="text" required class="w-full border-b border-gray-300 py-2 focus:outline-none focus:border-black bg-transparent">
+                                <input type="text" required class="form-input w-full border-b border-gray-300 py-2 focus:outline-none bg-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-1">Apellido <span class="text-gray-400">(obligatorio)</span></label>
-                                <input type="text" required class="w-full border-b border-gray-300 py-2 focus:outline-none focus:border-black bg-transparent">
+                                <input type="text" required class="form-input w-full border-b border-gray-300 py-2 focus:outline-none bg-transparent">
                             </div>
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1">Correo electrónico <span class="text-gray-400">(obligatorio)</span></label>
-                            <input type="email" required class="w-full border-b border-gray-300 py-2 focus:outline-none focus:border-black bg-transparent">
+                            <input type="email" required class="form-input w-full border-b border-gray-300 py-2 focus:outline-none bg-transparent">
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1">Mensaje <span class="text-gray-400">(obligatorio)</span></label>
-                            <textarea required rows="4" class="w-full border-b border-gray-300 py-2 focus:outline-none focus:border-black bg-transparent resize-none"></textarea>
+                            <textarea required rows="4" class="form-input w-full border-b border-gray-300 py-2 focus:outline-none bg-transparent resize-none"></textarea>
                         </div>
                         <button type="submit" class="bg-black text-white px-8 py-3 rounded text-sm font-semibold hover:bg-gray-800 transition-colors">ENVIAR</button>
                     </form>
@@ -416,7 +551,7 @@
                         </div>
                         <div class="flex gap-3">
                             <button onclick="clearCart()" class="border border-red-400 text-red-500 px-4 py-2 rounded text-sm font-semibold hover:bg-red-500 hover:text-white transition-colors">Vaciar</button>
-                            <button onclick="alert('¡Gracias por tu compra! Pronto nos pondremos en contacto.')" class="bg-black text-white px-6 py-2 rounded text-sm font-semibold hover:bg-gray-800 transition-colors">Finalizar compra</button>
+                            <button onclick="handleCheckout()" class="bg-black text-white px-6 py-2 rounded text-sm font-semibold hover:bg-gray-800 transition-colors">Finalizar compra</button>
                         </div>
                     </div>
                 </div>
@@ -424,6 +559,11 @@
         </div>
 
     </main>
+
+    <!-- Scroll to Top Button -->
+    <button id="scroll-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="Volver arriba">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+    </button>
 
     <!-- Footer -->
     <footer class="bg-[#222] text-white pt-16 pb-8 border-t-4 border-gray-800">
@@ -459,29 +599,40 @@
     <script>
         lucide.createIcons();
 
-        // SPA Navigation
+        // ============ SPA NAVIGATION ============
         function navigate(sectionId) {
             document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
             const target = document.getElementById(sectionId);
             if (target) { target.classList.add('active'); window.scrollTo(0,0); }
             document.getElementById('mobile-menu').classList.add('hidden');
+            // Re-trigger scroll animations
+            setTimeout(initScrollReveal, 100);
         }
 
         function toggleMobileMenu() {
             document.getElementById('mobile-menu').classList.toggle('hidden');
         }
 
-        // Quantity buttons
+        // ============ QUANTITY ============
         function changeQty(btn, delta) {
             const container = btn.closest('.flex');
             const display = container.querySelector('.qty-display');
             let val = parseInt(display.textContent) + delta;
             if (val < 1) val = 1;
+            if (val > 99) val = 99;
             display.textContent = val;
         }
 
-        // Cart state
+        // ============ CART (with localStorage persistence) ============
         let cart = [];
+        try {
+            const saved = localStorage.getItem('puffkers_cart');
+            if (saved) cart = JSON.parse(saved);
+        } catch(e) { cart = []; }
+
+        function saveCart() {
+            try { localStorage.setItem('puffkers_cart', JSON.stringify(cart)); } catch(e) {}
+        }
 
         function addToCartQty(btn, name, price) {
             const container = btn.closest('.flex');
@@ -489,37 +640,71 @@
             const existing = cart.find(i => i.name === name);
             if (existing) existing.qty += qty;
             else cart.push({ name, price, qty });
+            saveCart();
             updateCartUI();
-            showToast(btn, qty);
+            showToast(btn, qty, name);
+            // Reset qty display
+            container.querySelector('.qty-display').textContent = '1';
         }
 
-        // Legacy addToCart for tienda page
         function addToCart() {
             const btn = event.currentTarget;
-            cart.push({ name: 'Puffkers Mora Berry Q.25', price: 25, qty: 1 });
+            const name = 'Puffkers Mora Berry Q.25';
+            const existing = cart.find(i => i.name === name);
+            if (existing) existing.qty += 1;
+            else cart.push({ name, price: 25, qty: 1 });
+            saveCart();
             updateCartUI();
-            showToast(btn, 1);
+            showToast(btn, 1, name);
         }
 
-        function showToast(btn, qty) {
+        function showToast(btn, qty, name) {
             const orig = btn.innerText;
-            btn.innerText = '✓ ¡Añadido!';
+            btn.innerText = '✓ Añadido';
             btn.classList.add('bg-green-500','text-white','border-green-500');
             setTimeout(() => {
                 btn.innerText = orig;
                 btn.classList.remove('bg-green-500','text-white','border-green-500');
             }, 1500);
 
-            // Toast notification
             const toast = document.createElement('div');
-            toast.className = 'fixed bottom-6 right-6 bg-black text-white px-5 py-3 rounded-lg shadow-lg text-sm font-semibold z-50 transition-all';
-            toast.textContent = qty + ' producto(s) añadido(s) al carrito';
+            toast.className = 'fixed bottom-6 left-1/2 -translate-x-1/2 bg-black text-white px-5 py-3 rounded-lg shadow-2xl text-sm font-semibold z-50 flex items-center gap-3';
+            toast.style.animation = 'slideIn 0.3s ease';
+            toast.innerHTML = `
+                <span class="bg-green-500 rounded-full w-6 h-6 flex items-center justify-center text-xs">✓</span>
+                <div>
+                    <div>${qty} × ${name}</div>
+                    <button onclick="navigate('carrito'); this.closest('.fixed').remove();" class="text-purple-300 text-xs hover:text-white underline mt-1">Ver carrito →</button>
+                </div>
+            `;
             document.body.appendChild(toast);
-            setTimeout(() => toast.remove(), 2500);
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transition = 'opacity 0.3s';
+            }, 2700);
+            setTimeout(() => toast.remove(), 3000);
         }
 
         function clearCart() {
+            if (cart.length === 0) return;
+            if (!confirm('¿Vaciar el carrito completamente?')) return;
             cart = [];
+            saveCart();
+            updateCartUI();
+        }
+
+        function removeItem(idx) {
+            cart.splice(idx, 1);
+            saveCart();
+            updateCartUI();
+        }
+
+        function changeCartItemQty(idx, delta) {
+            cart[idx].qty += delta;
+            if (cart[idx].qty < 1) {
+                cart.splice(idx, 1);
+            }
+            saveCart();
             updateCartUI();
         }
 
@@ -533,24 +718,27 @@
             const totalItems = cart.reduce((s, i) => s + i.qty, 0);
             const totalPrice = cart.reduce((s, i) => s + i.price * i.qty, 0);
 
-            // Badge
             if (totalItems > 0) { badge.innerText = totalItems; badge.classList.remove('hidden'); }
             else badge.classList.add('hidden');
 
-            // Cart page
+            if (!filledState) return;
+
             if (cart.length > 0) {
                 emptyState.classList.add('hidden');
                 filledState.classList.remove('hidden');
                 itemsList.innerHTML = cart.map((item, idx) => `
-                    <div class="flex justify-between items-center py-4">
-                        <div>
-                            <p class="font-semibold">${item.name}</p>
-                            <p class="text-sm text-gray-500">Q.${item.price}.00 × ${item.qty}</p>
+                    <div class="cart-item-row flex justify-between items-center py-5">
+                        <div class="flex-1">
+                            <p class="font-semibold mb-1">${item.name}</p>
+                            <p class="text-sm text-gray-500">Q.${item.price}.00 c/u</p>
                         </div>
-                        <div class="flex items-center gap-4">
-                            <p class="font-bold">Q.${item.price * item.qty}.00</p>
-                            <button onclick="removeItem(${idx})" class="text-gray-400 hover:text-red-500 text-lg">×</button>
+                        <div class="flex items-center gap-2 mr-4 border border-gray-200 rounded-lg">
+                            <button onclick="changeCartItemQty(${idx},-1)" class="w-8 h-8 text-gray-500 hover:text-black font-bold">−</button>
+                            <span class="font-semibold min-w-[1.5rem] text-center">${item.qty}</span>
+                            <button onclick="changeCartItemQty(${idx},1)" class="w-8 h-8 text-gray-500 hover:text-black font-bold">+</button>
                         </div>
+                        <p class="font-bold w-20 text-right">Q.${item.price * item.qty}.00</p>
+                        <button onclick="removeItem(${idx})" class="text-gray-400 hover:text-red-500 text-2xl ml-4 w-8" title="Eliminar">×</button>
                     </div>
                 `).join('');
                 totalEl.textContent = 'Q.' + totalPrice + '.00';
@@ -560,10 +748,82 @@
             }
         }
 
-        function removeItem(idx) {
-            cart.splice(idx, 1);
+        // Initialize cart on load
+        updateCartUI();
+
+        // ============ CHECKOUT ============
+        function handleCheckout() {
+            if (cart.length === 0) return;
+            const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+            const items = cart.map(i => `• ${i.qty} × ${i.name}`).join('\n');
+            alert(`¡Gracias por tu compra! 🎉\n\nResumen:\n${items}\n\nTotal: Q.${total}.00\n\nPronto nos pondremos en contacto contigo.`);
+            cart = [];
+            saveCart();
             updateCartUI();
+            navigate('home');
         }
+
+        // ============ CONTACT FORM ============
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            const form = e.target;
+            const inputs = form.querySelectorAll('input[required], textarea[required]');
+            let valid = true;
+            inputs.forEach(input => {
+                input.classList.remove('invalid');
+                if (!input.value.trim()) {
+                    input.classList.add('invalid');
+                    valid = false;
+                } else if (input.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value)) {
+                    input.classList.add('invalid');
+                    valid = false;
+                }
+            });
+            if (!valid) {
+                showAlert('Por favor revisa los campos marcados en rojo.', 'error');
+                return;
+            }
+            showAlert('¡Mensaje enviado correctamente! Te responderemos pronto. 💜', 'success');
+            form.reset();
+        }
+
+        function showAlert(msg, type) {
+            const alert = document.createElement('div');
+            const bg = type === 'success' ? 'bg-green-500' : 'bg-red-500';
+            alert.className = `fixed top-24 left-1/2 -translate-x-1/2 ${bg} text-white px-6 py-3 rounded-lg shadow-lg z-50 text-sm font-semibold`;
+            alert.textContent = msg;
+            document.body.appendChild(alert);
+            setTimeout(() => {
+                alert.style.opacity = '0';
+                alert.style.transition = 'opacity 0.4s';
+            }, 3000);
+            setTimeout(() => alert.remove(), 3500);
+        }
+
+        // ============ SCROLL TO TOP BUTTON ============
+        const scrollBtn = document.getElementById('scroll-top-btn');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) scrollBtn.classList.add('visible');
+            else scrollBtn.classList.remove('visible');
+        });
+
+        // ============ SCROLL REVEAL ANIMATIONS ============
+        function initScrollReveal() {
+            const reveals = document.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            reveals.forEach(el => observer.observe(el));
+        }
+
+        // Auto-add reveal class to sections
+        document.querySelectorAll('section').forEach(s => s.classList.add('reveal'));
+        initScrollReveal();
     </script>
 </body>
 </html>
